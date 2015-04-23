@@ -1,0 +1,241 @@
+/* web font */
+@font-face {
+    font-family: 'LatoLight';
+    src: url('../fonts/Lato-Lig-webfont.eot');
+    src: url('../fonts/Lato-Lig-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Lato-Lig-webfont.woff') format('woff'), url('../fonts/Lato-Lig-webfont.ttf') format('truetype'), url('../fonts/Lato-Lig-webfont.svg#LatoLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LatoBold';
+    src: url('../fonts/Lato-Bol-webfont.eot');
+    src: url('../fonts/Lato-Bol-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Lato-Bol-webfont.woff') format('woff'), url('../fonts/Lato-Bol-webfont.ttf') format('truetype'), url('../fonts/Lato-Bol-webfont.svg#Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  background: #ECF0F1;
+}
+
+input[type="checkbox"] {
+    padding-left:5px;
+    padding-right:5px;
+    border-radius:15px;
+
+    -webkit-appearance:button;
+
+    border: double 4px #ccc;
+
+    background-color:#ccc;
+    color:#FFF;
+    white-space: nowrap;
+    overflow:hidden;
+
+    width:25px;
+    height:25px;
+}
+
+input[type="checkbox"]:checked {
+    background-color:#3498db;
+}
+
+input[type="checkbox"]:hover {
+    box-shadow:0px 0px 10px #1300ff;
+}
+
+header,
+section {
+  max-width:990px;
+    min-width:500px;
+  margin:0 auto;
+}
+
+header {
+  background:#2C3E50;
+  border-radius: 300px;
+  max-width:300px;
+  width:300px;
+  position: relative;
+  top:-100px;
+}
+
+h1{
+  font-family: 'LatoLight', Lato, arial, sans-serif;
+  font-weight:100;
+  color:#fff;
+  width:100%;
+  text-align:center;
+  font-size:3em;
+  line-height:60px;
+  padding: 120px 0;
+  margin:0;
+}
+
+h1 span {
+    font-family: 'LatoBold', Lato, arial, sans-serif;
+    font-weight:900;
+}
+
+h2 {
+  font-family: 'LatoBold', Lato, arial, sans-serif;
+  font-weight:100;
+  color:#2C3E50;
+}
+
+.core-section {
+    position: relative;
+    margin: 50px auto 20px auto;
+    border-bottom: 1px solid white;
+}
+
+.core-section h2 {
+    transform: rotate(-90deg);
+    position:absolute;
+    top:50px;
+    left:-50px;
+    margin:0;
+    padding:10px;
+    background: #bbb;
+    width:130px;
+    height:34px
+}
+
+#compare-bugs {
+    width:100%;
+    min-height:230px;
+    position: relative;
+}
+#comparison-area {
+    margin:0 auto;
+}
+#comparisonBase {
+    background: url(../img/comparison-section-base.png) no-repeat;
+    width:385px;
+    height:110px;
+    background-size:100%;
+    margin:0 auto;
+}
+
+
+table#doodle-list {
+    font-size: 1.8em;
+    margin-left:100px;
+    font-family: 'LatoLight', Lato, arial, sans-serif;
+}
+
+th, td {
+    text-align: left;
+    text-transform: lowercase;
+
+
+    vertical-align: top;
+    padding-right:30px
+}
+
+th {
+    font-family: 'LatoBold', Lato, arial, sans-serif;
+    line-height: 40px;
+    padding-bottom: 10px;
+}
+
+th:first-child {
+    text-indent: 100px
+}
+
+th.sortable a {
+    background: url(../img/order-sprite.png) no-repeat 0 8px;
+    text-indent: -1000px;
+    display: inline-block;
+    width: 14px
+}
+
+th.sortable a:hover {
+    background-position: 0 -42px;
+}
+
+th.sortable a.sort-down {
+    background-position: 0 -92px;
+}
+
+th.sortable a.sort-up {
+    background-position: 0 -142px;
+}
+
+td {
+line-height: 80px;
+    height:100px;
+}
+
+td[class^="icon"]:before {
+    width:60px;
+    display: inline-block;
+    background: #fff;
+    height: 60px;
+    border-radius: 100px;
+    font-size: 60px;
+    padding:10px;
+    margin-right: 20px;
+    line-height:60px;
+    transition: width 0.1s, height 0.1s, padding 0.1s, font-size 0.1s, color 0.2s, line-height 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+tr:hover td[class^="icon"]:before {
+    padding:0;
+    font-size:80px;
+    width:80px;
+    height:80px;
+    color:#3498db;
+    line-height:60px;
+}
+
+tr:hover td {
+    color:#3498db;
+}
+
+
+@media (max-width: 800px) {
+    table#doodle-list {
+        font-size: 1em;
+
+    }
+
+    td {
+        line-height: 40px;
+        height:50px;
+    }
+
+    th:first-child {
+        text-indent: 50px;
+        min-width: 120px;
+    }
+
+    th:nth-child(2) {
+        min-width: 60px;
+    }
+
+    td[class^="icon"]:before {
+        width:30px;
+        display: inline-block;
+        background: #fff;
+        height: 30px;
+        border-radius: 50px;
+        font-size: 30px;
+        padding:5px;
+        margin-right: 10px;
+        line-height:30px;
+        transition: width 0.1s, height 0.1s, padding 0.1s, font-size 0.1s, color 0.2s, line-height 0.1s;
+        transition-timing-function: ease-in-out;
+    }
+
+    tr:hover td[class^="icon"]:before {
+        padding:0;
+        font-size:40px;
+        width:40px;
+        height:40px;
+        color:#3498db;
+        line-height:30px;
+    }
+
+}
