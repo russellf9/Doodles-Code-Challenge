@@ -52,6 +52,8 @@ You only need to use the -u the first time.
 
 #Other info
 
+This project includes a /spec/ folder and associated specRunner.html file to assist with any unit testing (via the Jasmine framework) that you may wish to do as part of this exercise.
+
 The project is based on [HTML5 Boilerplate](https://html5boilerplate.com).
 
 You will probably need to run via a local web server such either via dev tools that have their own (Brackets, WebStorm, IntelliJ etc.) or a local one (Xampp etc.).
