@@ -2,7 +2,7 @@
 
 We are going to set you some tasks that will really help us when it comes to assessing your fit for the role available.  
 
-This is a totally fictional project made just for this purpose - nothing you do will be used for anything other than as a talking point and assessment of your abilities
+This is a totally fictional project made just for this purpose - nothing you do will be used for anything other than as a talking point and assessment of your abilities.
 
 It focuses on HTML, JavaScript and CSS.  If you want to add AngularJS to anything, you are welcome to and this is fine, but our key aim is to understand your underlying skills.
 
