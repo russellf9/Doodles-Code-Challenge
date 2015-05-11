@@ -43,6 +43,7 @@
     function bindEvents(){
 
         $('a', '.sortable').on('click', function(evt){
+
             evt.preventDefault();
 
             if($(this).hasClass('sort-up')){
@@ -56,11 +57,6 @@
                 $(this).addClass('sort-up');
                 sortBugsByName('up');
             }
-        });
-
-        $("input:checkbox").on('click',function() {
-            var compareLimit = $("input:checkbox:checked").length >= 2;
-            $("input:checkbox").not(":checked").attr("disabled",compareLimit);
         });
     };
 
@@ -82,6 +78,11 @@
 
         $.each(bugList, function(i, bug){
             $('#doodle-list tbody').append('<tr><td class="icon-'+bug.doodleName+'-bug">'+bug.formatName()+'</td><td>'+bug.teamName+'</td><td>'+bug.getHighestRating()+'</td><td><input name="compare[]" type="checkbox" value="'+bug.doodleName+'"/></td></tr>')
+        });
+
+        $("input:checkbox").on('click',function() {
+            var compareLimit = $("input:checkbox:checked").length >= 2;
+            $("input:checkbox").not(":checked").attr("disabled",compareLimit);
         });
 
 
