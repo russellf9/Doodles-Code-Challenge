@@ -129,6 +129,16 @@ table#doodle-list {
     font-family: 'LatoLight', Lato, arial, sans-serif;
 }
 
+table#comparison-list {
+    font-size: 5em;
+    margin-left:200px;
+    font-family: 'LatoBold', Lato, arial, sans-serif;
+
+
+}
+
+
+
 th, td {
     text-align: left;
     text-transform: lowercase;
@@ -136,6 +146,11 @@ th, td {
 
     vertical-align: top;
     padding-right:30px
+}
+
+table#comparison-list td {
+    !important margin: 40px;
+    padding-left:30px
 }
 
 th {

@@ -58,7 +58,7 @@
                 sortBugsByName('up');
             }
         });
-    };
+    }
 
     function handleDoodles(data) {
 
@@ -83,8 +83,21 @@
         $("input:checkbox").on('click',function() {
             var compareLimit = $("input:checkbox:checked").length >= 2;
             $("input:checkbox").not(":checked").attr("disabled",compareLimit);
+
+            renderComparison();
         });
 
+    }
+
+    function renderComparison() {
+        console.log('renderComparison');
+        // get the list of the selected checkboxes
+        var selected = [];
+        $('#doodle-list input:checked').each(function() {
+            selected.push($(this).attr('value'));
+        });
+
+        console.log('renderComparison | selected: ',selected);
 
     }
 
