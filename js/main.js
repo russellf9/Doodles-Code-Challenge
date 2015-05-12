@@ -100,15 +100,16 @@
         });
 
         $('#comparison-list tbody').empty();
+        
+
+        var firstItem = selected[0] ? '<td class="icon-'+selected[0]+'-bug large-icon"></td>' : '<td class="not-selected"><i class="fa fa-question-circle fa-4x"></i></td>';
+        var secondItem = selected[1] ? '<td class="icon-'+selected[1]+'-bug"></td>' : '<td class="not-selected"><i class="fa fa-question-circle fa-4x"></i></td>';
+        $('#comparison-list tbody').append('<tr class="first-item">' + firstItem +  '<td class="list-bold"> vs </td>' + secondItem + '</tr>');
+
 
         if(!selected.length) {
             renderDefaultComparisonText()
         }
-
-        var firstItem = selected[0] ? '<td class="icon-'+selected[0]+'-bug large-icon"></td>' : '<td class=""><i class="fa fa-question-circle fa-4x"></i></td>';
-        var secondItem = selected[1] ? '<td class="icon-'+selected[1]+'-bug"></td>' : '<td class=""><i class="fa fa-question-circle fa-4x"></i></td>';
-        $('#comparison-list tbody').append('<tr>' + firstItem +  '<td> vs </td>' + secondItem + '</tr>');
-
 
         if(!selected.length) {
             return;
@@ -117,25 +118,55 @@
         var firstBug = getBugByName(selected[0]);
         var secondBug = getBugByName(selected[1]);
 
+
         // speed
         var speedOne = firstBug ? firstBug.attributes.speed : '0';
         var speedTwo = secondBug ? secondBug.attributes.speed : '0';
-        $('#comparison-list tbody').append('<tr>' + '<td>' + speedOne +  '</td><td> speed </td><td>' + speedTwo + '</td></tr>');
+
+        var compareStyleOne = '';
+        var compareStyleTwo = '';
+
+        var styles = getCompareStyles(speedOne, speedTwo);
+        compareStyleOne = styles[0];
+        compareStyleTwo = styles[1];
+
+        $('#comparison-list tbody').append('<tr class="attributes-bold">' + '<td class="'+ compareStyleOne + '">' + speedOne +  '</td><td> speed </td><td class="' + compareStyleTwo + '">' + speedTwo + '</td></tr>');
 
         // strength
         var strengthOne = firstBug ? firstBug.attributes.strength : '0';
         var strengthTwo = secondBug ? secondBug.attributes.strength : '0';
-        $('#comparison-list tbody').append('<tr>' + '<td>' + strengthOne +  '</td><td> strength </td><td>' + strengthTwo + '</td></tr>');
+
+        styles = getCompareStyles(strengthOne, strengthTwo);
+        compareStyleOne = styles[0];
+        compareStyleTwo = styles[1];
+
+        $('#comparison-list tbody').append('<tr class="attributes-bold">' + '<td class="'+ compareStyleOne + '">' + strengthOne +  '</td><td> strength </td><td class="' + compareStyleTwo + '">' + strengthTwo + '</td></tr>');
 
 
         // intelligence
         var intelligenceOne = firstBug ? firstBug.attributes.intelligence : '0';
         var intelligenceTwo = secondBug ? secondBug.attributes.intelligence : '0';
-        $('#comparison-list tbody').append('<tr>' + '<td>' + intelligenceOne +  '</td><td> intelligence </td><td>' + intelligenceTwo + '</td></tr>');
+
+        styles = getCompareStyles(intelligenceOne, intelligenceTwo);
+        compareStyleOne = styles[0];
+        compareStyleTwo = styles[1];
+
+        $('#comparison-list tbody').append('<tr class="attributes-bold">' + '<td class="'+ compareStyleOne + '">' + intelligenceOne +  '</td><td> intelligence </td><td class="' + compareStyleTwo + '">' + intelligenceTwo + '</td></tr>');
+    }
+
+
+    function getCompareStyles(varOne, varTwo) {
+        var compareStyleOne = 'not-selected';
+        var compareStyleTwo = 'not-selected';
+        compareStyleOne = (varOne >= varTwo) ? 'higher' : 'lower';
+        if(varTwo > 0) {
+            compareStyleTwo = (varTwo >= varOne) ? 'higher' : 'lower';
+        }
+        return [compareStyleOne, compareStyleTwo];
     }
 
     function renderDefaultComparisonText() {
-        $('#comparison-list tbody').append('<tr><td>Select two doodles to compare which has the skills you like the most.</td></tr>');
+        $('#comparison-list tbody').append('<tr><td class="list-default-text">Select two doodles to compare which has the skills you like the most.</td></tr>');
     }
 
     // returns the requested bug from the `bugArr`

@@ -215,6 +215,7 @@ table#comparison-list td {
 table#comparison-list {
     font-size: 1.8em;
     margin-left:200px;
+    margin-bottom:40px;
     font-family: 'LatoLight', Lato, arial, sans-serif;
 
 }
@@ -224,6 +225,37 @@ table#comparison-list td {
     text-transform: none;
     vertical-align: middle;
     padding-right: 30px;
+    height: 40px;
+    line-height: 30px;
+}
+.list-bold {
+    font-family: 'LatoBold', Lato, arial, sans-serif;
+    font-size: 40px;
+    margin: 0;
+}
+.attributes-bold {
+    font-family: 'LatoBold', Lato, arial, sans-serif;
+    margin: 0;
+}
+
+.list-default-text {
+    width: 350px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*border: solid 1px red;*/
+}
+.first-item {
+    /*border: solid 1px red;*/
+}
+.higher {
+    color: #6EE80C;
+}
+
+.lower {
+    color: #E74C3C;
+}
+.not-selected {
+    color: #8C97A0;
 }
 
 
