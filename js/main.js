@@ -16,8 +16,9 @@
             return this.doodleName;
         };
         this.formatName = function() {
-            return this.doodleName + ":bug"
-        }
+            return this.doodleName + ":bug";
+        };
+
     }
 
     var bugArr = [];
@@ -70,11 +71,11 @@
         });
 
         renderBugs(bugArr);
+        renderComparison();
 
     }
 
     function renderBugs(bugList) {
-        $('#doodle-list tbody').empty();
 
         $.each(bugList, function(i, bug){
             $('#doodle-list tbody').append('<tr><td class="icon-'+bug.doodleName+'-bug">'+bug.formatName()+'</td><td>'+bug.teamName+'</td><td>'+bug.getHighestRating()+'</td><td><input name="compare[]" type="checkbox" value="'+bug.doodleName+'"/></td></tr>')
@@ -90,15 +91,57 @@
     }
 
     function renderComparison() {
-        console.log('renderComparison');
+
         // get the list of the selected checkboxes
         var selected = [];
+
         $('#doodle-list input:checked').each(function() {
             selected.push($(this).attr('value'));
         });
 
-        console.log('renderComparison | selected: ',selected);
+        $('#comparison-list tbody').empty();
 
+        if(!selected.length) {
+            renderDefaultComparisonText()
+        }
+
+        var firstItem = selected[0] ? '<td class="icon-'+selected[0]+'-bug large-icon"></td>' : '<td class=""><i class="fa fa-question-circle fa-4x"></i></td>';
+        var secondItem = selected[1] ? '<td class="icon-'+selected[1]+'-bug"></td>' : '<td class=""><i class="fa fa-question-circle fa-4x"></i></td>';
+        $('#comparison-list tbody').append('<tr>' + firstItem +  '<td> vs </td>' + secondItem + '</tr>');
+
+
+        if(!selected.length) {
+            return;
+        }
+
+        var firstBug = getBugByName(selected[0]);
+        var secondBug = getBugByName(selected[1]);
+
+        // speed
+        var speedOne = firstBug ? firstBug.attributes.speed : '0';
+        var speedTwo = secondBug ? secondBug.attributes.speed : '0';
+        $('#comparison-list tbody').append('<tr>' + '<td>' + speedOne +  '</td><td> speed </td><td>' + speedTwo + '</td></tr>');
+
+        // strength
+        var strengthOne = firstBug ? firstBug.attributes.strength : '0';
+        var strengthTwo = secondBug ? secondBug.attributes.strength : '0';
+        $('#comparison-list tbody').append('<tr>' + '<td>' + strengthOne +  '</td><td> strength </td><td>' + strengthTwo + '</td></tr>');
+
+
+        // intelligence
+        var intelligenceOne = firstBug ? firstBug.attributes.intelligence : '0';
+        var intelligenceTwo = secondBug ? secondBug.attributes.intelligence : '0';
+        $('#comparison-list tbody').append('<tr>' + '<td>' + intelligenceOne +  '</td><td> intelligence </td><td>' + intelligenceTwo + '</td></tr>');
+    }
+
+    function renderDefaultComparisonText() {
+        $('#comparison-list tbody').append('<tr><td>Select two doodles to compare which has the skills you like the most.</td></tr>');
+    }
+
+    // returns the requested bug from the `bugArr`
+    function getBugByName(name) {
+        var array = _.where(bugArr, {doodleName:name});
+        return array ? array[0] : null;
     }
 
     function sortBugsByName(direction) {

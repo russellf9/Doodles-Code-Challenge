@@ -129,13 +129,7 @@ table#doodle-list {
     font-family: 'LatoLight', Lato, arial, sans-serif;
 }
 
-table#comparison-list {
-    font-size: 5em;
-    margin-left:200px;
-    font-family: 'LatoBold', Lato, arial, sans-serif;
 
-
-}
 
 
 
@@ -148,10 +142,7 @@ th, td {
     padding-right:30px
 }
 
-table#comparison-list td {
-    !important margin: 40px;
-    padding-left:30px
-}
+
 
 th {
     font-family: 'LatoBold', Lato, arial, sans-serif;
@@ -214,6 +205,27 @@ tr:hover td {
     color:#3498db;
 }
 
+/*override default css for the comparison icons*/
+
+table#comparison-list td {
+!important margin: 40px;
+    padding-left:30px
+}
+
+table#comparison-list {
+    font-size: 1.8em;
+    margin-left:200px;
+    font-family: 'LatoLight', Lato, arial, sans-serif;
+
+}
+
+table#comparison-list td {
+    text-align: center;
+    text-transform: none;
+    vertical-align: middle;
+    padding-right: 30px;
+}
+
 
 @media (max-width: 800px) {
     table#doodle-list {
@@ -258,4 +270,9 @@ tr:hover td {
         line-height:30px;
     }
 
+}
+
+
+.large-icon {
+    font-size: 90px !important;
 }
