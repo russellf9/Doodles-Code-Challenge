@@ -92,16 +92,28 @@
 
     function renderComparison() {
 
-        // get the list of the selected checkboxes
+        // INIT the list for the bugs
         var selected = [];
 
+
+        // FOR all the selected bugs
+           //  Add the bug to the the list
         $('#doodle-list input:checked').each(function() {
             selected.push($(this).attr('value'));
         });
 
+        // DELETE all comparison list items
         $('#comparison-list tbody').empty();
-        
 
+        console.log('selected: ', selected);
+
+
+        //  FOR all the places in the list
+        //     IF a bug exists THEN
+        //        DISPLAY that bug's icon
+        //     ELSE
+        //        DISPLAY a question mark
+        //
         var firstItem = selected[0] ? '<td class="icon-'+selected[0]+'-bug large-icon"></td>' : '<td class="not-selected"><i class="fa fa-question-circle fa-4x"></i></td>';
         var secondItem = selected[1] ? '<td class="icon-'+selected[1]+'-bug"></td>' : '<td class="not-selected"><i class="fa fa-question-circle fa-4x"></i></td>';
         $('#comparison-list tbody').append('<tr class="first-item">' + firstItem +  '<td class="list-bold"> vs </td>' + secondItem + '</tr>');
